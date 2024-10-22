@@ -1,0 +1,49 @@
+<div class="modal bg-slate-500 w-1/2 h-1/2">
+    <form [formGroup]="formProcess">
+        <div class="mb-4">
+            <label class="block text-white text-sm font-bold mb-2"
+            for="name">
+                Nome
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 bg-slate-700 px-3 border-slate-900 text-gray-300 leading-tight"
+                id="name"
+                type="text"
+                formControlName="name"
+                [class.error]="formProcess.get('name')?.invalid && formProcess.get('name')?.touched">
+        </div>
+
+        <div class="mb-4">
+            <label for="processType" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de processo</label>
+
+            <select disabled id="processType"
+                class="text-sm rounded-lg block w-full p-2.5 bg-slate-700 px-3 border-slate-900 text-gray-300">
+                <option [ngValue]="formProcess.value.idProcessType">{{processTypeName}}</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-white text-sm font-bold mb-2" for="description">
+                Descrição
+            </label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 bg-slate-700 px-3 border-slate-900 text-gray-300 leading-tight"
+                id="description"
+                type="text"
+                rows="7"
+                formControlName="description"
+                [class.error]="formProcess.get('description')?.invalid && formProcess.get('description')?.touched">
+            </textarea>
+        </div>
+
+        <div class="flex items-center justify-start gap-5">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+            (click)="onSubmit()">
+                {{editMode ? 'Editar' : 'Cadastrar'}}
+            </button>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+            (click)="onCancel()">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
+<div class="overlay"></div>

@@ -1,0 +1,29 @@
+<main class="flex flex-col justify-center items-center w-[350px] h-[80px]">
+    
+    <div class="flex w-[350px] h-[100px] justify-center items-start relative">
+        <input class="absolute -left-5 -top-5 w-5 h-5 appearance-none cursor-pointer border border-gray-300 rounded-xl mr-2 hover:border-indigo-500 hover:bg-green-300 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-green-500"
+            type="checkbox" [(ngModel)]="processType.checked" (click)="handleProcessTypeCheck($event)"/>
+        
+        <h1 class="text-xl font-bold text-green-500 w-[300px] h-[30px] overflow-hidden truncate">
+            {{processType.name}}
+        </h1>
+    </div>
+
+    <h3 class="text-green-500 w-[300px] h-[50px] overflow-hidden truncate">
+        {{processType.description}}
+    </h3>
+
+    <div class="flex w-full relative">
+        <button class="absolute -left-5 top-5 w-7 h-7 flex items-center justify-center rounded-2xl bg-orange-500 py-2 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-orange-700 focus:shadow-none active:bg-orange-500 hover:bg-orange-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="editProcessType()">
+            <i-lucide name="pencil" [size]="15"></i-lucide>
+        </button>
+
+        <button class="absolute left-2 top-5 w-7 h-7 flex items-center justify-center rounded-2xl bg-red-500 py-2 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-500 hover:bg-orange-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="excludeProcessType()">
+            <i-lucide name="trash2" [size]="15"></i-lucide>
+        </button>
+    </div>
+</main>

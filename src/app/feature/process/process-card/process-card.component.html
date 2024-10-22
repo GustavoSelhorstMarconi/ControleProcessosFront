@@ -1,0 +1,28 @@
+<main class="flex flex-col justify-between items-center h-[80px]">
+    <div class="flex h-[100px] justify-center items-center relative">
+        <input class="absolute -left-10 -top-5 w-5 h-5 appearance-none cursor-pointer border border-gray-300 rounded-xl hover:border-indigo-500 hover:bg-yellow-300 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-yellow-500"
+            type="checkbox" [(ngModel)]="process.checked" (click)="handleProcessCheck($event)"/>
+
+        <h1 class="text-xl font-normal text-yellow-500 w-[250px] h-[30px] overflow-hidden truncate">
+            {{process.name}}
+        </h1>
+    </div>
+
+    <h3 class="text-yellow-500 font-light w-[250px] h-[50px] overflow-hidden truncate">
+        {{process.description}}
+    </h3>
+
+    <div class="flex w-full relative">
+        <button class="absolute -left-5 top-5 w-7 h-7 flex items-center justify-center rounded-2xl bg-orange-500 py-2 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-orange-700 focus:shadow-none active:bg-orange-500 hover:bg-orange-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="editProcess()">
+            <i-lucide name="pencil" [size]="15"></i-lucide>
+        </button>
+
+        <button class="absolute left-2 top-5 w-7 h-7 flex items-center justify-center rounded-2xl bg-red-500 py-2 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-500 hover:bg-orange-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="excludeProcess()">
+            <i-lucide name="trash2" [size]="15"></i-lucide>
+        </button>
+    </div>
+</main>

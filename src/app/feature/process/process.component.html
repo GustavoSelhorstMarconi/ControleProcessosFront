@@ -1,0 +1,60 @@
+<main class="flex flex-col items-start w-screen p-5 gap-5">
+    <div class="flex gap-5">
+        <p class="text-white text-2xl">
+            Selecione o tipo do processo
+        </p>
+        
+        <button class="flex items-center justify-center rounded-md bg-green-500 h-10 w-10 py-2 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-500 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="handleCreateProcessType()">
+            <i-lucide name="plus"></i-lucide>
+        </button>
+    </div>
+
+    <header class="flex w-full justify-between items-center">
+        <div class="flex gap-5 w-full">
+            @for (processType of processesTypes; track $index) {
+                <app-process-type-card [(processType)]="processesTypes[$index]"
+                (processTypeChange)="handleProcessTypeClick($event)"
+                (processTypeEdited)="handleProcessTypeEdited($event)"
+                [ngClass]="{'bg-slate-950 border-green-700': processType.checked}"
+                class="border-4 border-green-300 rounded-lg p-7 hover:scale-105 transition-transform"></app-process-type-card>
+            }
+            @empty {
+                <p class="text-white text-2xl">
+                    Não há nenhum tipo de processo cadastrado.
+                </p>
+            }
+        </div>
+    </header>
+
+    <section class="flex flex-col gap-5">
+        @if (allProcesses.length > 0)
+        {
+            <p class="text-white text-2xl">
+                Processos
+            </p>
+
+            <p class="text-white font-light">
+                Selecione um processo para ver os subprocessos
+            </p>
+
+            <div class="flex gap-7">
+                @for (processes of allProcesses; track $index) {
+                    <div class="w-[350px]">
+                        <app-process-list [processes]="processes.processes"
+                        [index]="$index"
+                        [idProcessParent]="processes.idProcessParent"
+                        [idProcessType]="processTypeSelected.id"
+                        [nameProcessType]="processTypeSelected.name"
+                        (processChecked)="handleProcessChecked($event)"
+                        (processCreated)="handleProcessCreated($event)"
+                        (processChanged)="handleProcessChanged($event)"
+                        class="w-[350px]"></app-process-list>
+                    </div>
+                }
+
+            </div>
+        }
+    </section>
+</main>
