@@ -91,11 +91,11 @@ export class ProcessComponent implements OnInit, OnDestroy {
                 if (y.id == processInfo.process.id)
                 {
                     let index = x.processes.indexOf(y);
+                    processInfo.process.checked = x.processes[index].checked;
 
                     x.processes.splice(index, 1);
 
                     if (!processInfo.excluded) {
-                        processInfo.process.checked = true;
                         x.processes.push(processInfo.process);
                     }
                     else {
