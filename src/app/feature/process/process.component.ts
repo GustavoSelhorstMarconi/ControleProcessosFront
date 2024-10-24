@@ -95,6 +95,7 @@ export class ProcessComponent implements OnInit, OnDestroy {
                     x.processes.splice(index, 1);
 
                     if (!processInfo.excluded) {
+                        processInfo.process.checked = true;
                         x.processes.push(processInfo.process);
                     }
                     else {
